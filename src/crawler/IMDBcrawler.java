@@ -111,7 +111,7 @@ public class IMDBcrawler {
 		}
 		
 		//parse the html page
-		ParseFilm p = new ParseFilm(HTMLtext);
+		ParseIMDBPage p = new ParseIMDBPage(HTMLtext);
 		movieJSON.remove("Director");
 		movieJSON.remove("Writer");
 		movieJSON.remove("Actors");
