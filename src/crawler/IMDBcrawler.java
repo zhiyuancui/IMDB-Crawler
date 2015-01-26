@@ -11,11 +11,11 @@
 package crawler;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -134,5 +134,44 @@ public class IMDBcrawler {
 	}
 	
 	
+	/**
+	 * read the film name from file
+	 * @param filename the file that stores the movie name
+	 * @return
+	 */
+	public ArrayList<String> getMovieList(String filename)
+	{
+		ArrayList<String> movieName = new ArrayList<String>();
+		
+		try{
+			FileReader reader = new FileReader(filename);
+			Scanner scanner = new Scanner(reader);
+			while(scanner.hasNext())
+			{
+				String name = scanner.nextLine();
+				movieName.add(name);
+			}
+			scanner.close();
+			reader.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return movieName;
+	}
+	
+	public static void main(String[] args)
+	{
+		if(args.length != 1)
+		{
+			System.out.println("Error argument");
+			System.out.println("Usage: java IMDBcrawler filename");
+			return;
+		}
+		
+		
+		
+	}
 	
 }
