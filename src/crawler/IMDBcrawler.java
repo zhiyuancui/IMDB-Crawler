@@ -170,7 +170,18 @@ public class IMDBcrawler {
 			return;
 		}
 		
+		IMDBcrawler c = new IMDBcrawler();
+		ArrayList<String> filmName = c.getMovieList(args[0]);
 		
+		//Iterator the list to get the name
+		Iterator<String> it = filmName.iterator();
+		while(it.hasNext())
+		{
+			String name = it.next();
+			
+			//Output the result
+			System.out.println(c.queryOMDB(name,null));
+		}
 		
 	}
 	
